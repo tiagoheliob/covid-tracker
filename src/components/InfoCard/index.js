@@ -8,9 +8,7 @@ export default ({ info }) => {
     const {
         country,
         cases,
-        todayCases,
         deaths,
-        todayDeaths,
         recovered,
         active,
         critical
@@ -26,9 +24,7 @@ export default ({ info }) => {
                 <Card.Header>{country}</Card.Header>
                 <Card.Body>
                     <Card.Text >Cases: {cases}</Card.Text>
-                    <Card.Text>Today Cases: {todayCases}</Card.Text>
                     <Card.Text>Deaths: {deaths}</Card.Text>
-                    <Card.Text>Today Deaths: {todayDeaths}</Card.Text>
                     <Card.Text>Recovered: {recovered}</Card.Text>
                     <Card.Text>Active: {active}</Card.Text>
                     <Card.Text>Critical: {critical}</Card.Text>
