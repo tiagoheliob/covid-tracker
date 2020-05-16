@@ -11,7 +11,7 @@ export default ( state = defaultState, action ) => {
             return { ...state, isLoading: false, error: true }
         case CountrySearch.SUCCESS:
             return { ...state, isLoading: false, error: false, countries: action.payload }
-        case CountrySearch.CLEANUP:
+        case CountrySearch.LOADING:
             return { ...state, isLoading: true };
         case CountrySearch.CLEANUP:
             return defaultState;

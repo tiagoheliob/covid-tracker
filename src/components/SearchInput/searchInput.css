@@ -4,6 +4,22 @@
     outline: none;
     background: #f8f9fa;
     padding: 20px;
-    width: 100%;
-    margin: 10px;
+    width: 80%;
+    transition: .5s all;
+}
+
+.search-input:disabled,
+.search-button:disabled {
+    background: #ccc;
+}
+
+.search-button {
+    outline: none;
+    border: none;
+    background: #f8f9fa;
+    transition: .5s all;
+}
+
+.search-button:hover {
+    background: #e2e2e2;
 }

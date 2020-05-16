@@ -1,18 +1,12 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { mappedFieldsToRender } from './constant';
 import './infoCard.css';
 
 
-
 export default ({ info }) => {
-    const {
-        country,
-        cases,
-        deaths,
-        recovered,
-        active,
-        critical
-    } = info;
+    const validateInfo = (info) => info ? info : 'N/A';
+    const fields = mappedFieldsToRender.map(({ field, label }) => <Card.Text key={label}>{label}: {validateInfo(info[field])}</Card.Text>)
     
     return (
         <>
@@ -21,13 +15,9 @@ export default ({ info }) => {
                 text="light"
                 className="customized-card"
             >
-                <Card.Header>{country}</Card.Header>
+                <Card.Header>{info.country}</Card.Header>
                 <Card.Body>
-                    <Card.Text >Cases: {cases}</Card.Text>
-                    <Card.Text>Deaths: {deaths}</Card.Text>
-                    <Card.Text>Recovered: {recovered}</Card.Text>
-                    <Card.Text>Active: {active}</Card.Text>
-                    <Card.Text>Critical: {critical}</Card.Text>
+                    {fields}
                 </Card.Body>
                 {<Button className="learn-more-button" variant="dark">Learn more</Button>}
             </Card>

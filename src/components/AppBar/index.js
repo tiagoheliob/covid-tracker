@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import Logo from '../../../assets/icons/covid-tracker-2.png';
+import Logo from '../../../assets/icons/covid-tracker.png';
 import './appBar.css';
 
 export default () => {
