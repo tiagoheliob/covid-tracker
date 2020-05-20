@@ -1,6 +1,6 @@
 import { CountrySearch } from '../actions/countrySearch';
 
-const defaultState = {
+export const defaultState = {
     countries: [],
     isLoading: false,
     error: false,

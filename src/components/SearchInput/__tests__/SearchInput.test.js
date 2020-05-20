@@ -19,20 +19,20 @@ beforeEach(() => {
 describe('The Search Input component', () => {
 
     
-    it("should triggers the search when the user hits enter on the input", () => {
+    it("should trigger the search when the user hits enter on the input", () => {
         wrapper.find('input').simulate('keypress', { key: 'Enter' });
 
         expect(props.searchWithoutCountry).toHaveBeenCalled();
     });
 
-    it("should triggers the search by country when country is specified", () => {
+    it("should trigger the search by country when country is specified", () => {
         wrapper.find('input').simulate('change', { target: { value: 'Any Country'} });
         wrapper.find('button').simulate('click');
 
         expect(props.searchByCountry).toHaveBeenCalled();
     });
 
-    it("should triggers the search without country when there is no country defined", () => {
+    it("should trigger the search without country when there is no country defined", () => {
         wrapper.find('button').simulate('click');
 
         expect(props.searchWithoutCountry).toHaveBeenCalled();

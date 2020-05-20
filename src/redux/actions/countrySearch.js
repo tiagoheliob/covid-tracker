@@ -7,25 +7,26 @@ export const CountrySearch = {
     LOADING: 'LOADING',
 }
 
-const axiosInstance = axios.create({ baseURL: "https://coronavirus-19-api.herokuapp.com/" });
+export const baseURL = "https://coronavirus-19-api.herokuapp.com";
 
 export const searchByCountry = (countryName) => async (dispatch) => {
-    genericSearch(countryName, dispatch);
+    await genericSearch(countryName)(dispatch);
 }
 
 export const searchWithoutCountry = () => async (dispatch) => {
-    genericSearch(null, dispatch);
+    await genericSearch()(dispatch);
 }
 
-const genericSearch = async (countryName, dispatch) =>{
+export const genericSearch = (countryName) => async (dispatch) => {
 
     dispatch({ type: CountrySearch.LOADING });
     
     try {
-        const url = countryName ? `countries/${countryName}` : `countries`;
-        const { data } = await axiosInstance.get(url);
+        const path = countryName ? `countries/${countryName}` : `countries`
+        const { data } = await axios.get(`${baseURL}/${path}`);
         dispatch({ type: CountrySearch.SUCCESS, payload: data });
     } catch (exception) {
         dispatch({ type: CountrySearch.ERROR });
     }
+    
 }
