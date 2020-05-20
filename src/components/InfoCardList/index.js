@@ -18,25 +18,23 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
     },[]);  
 
     const generateCards = (countries) => {
-        return countries.map(country => {
-            return (
-                <Col md={4} sm={6} xs={12} key={country.country}>
-                    <InfoCard info={country}/>
-                </Col>
-            );
-        });
+        return countries.map(country =>
+            <Col md={4} sm={6} xs={12} key={country.country}>
+                <InfoCard info={country}/>
+            </Col>
+        );
     }
 
     //Silly workaround because the API returns http code 200 with a string "Country not found"
     let contentToBeRendered = null;
     if (typeof countries === 'string'){
-        contentToBeRendered = <Alert message="Country not found" icon={NotFoundEmoji}/>;
+        contentToBeRendered = <Alert id="warning-alert" message="Country not found" icon={NotFoundEmoji}/>;
     } else {
         contentToBeRendered = Array.isArray(countries) ? generateCards(countries) : generateCards([countries]);
     }
 
     if (error) {
-        contentToBeRendered = <Alert icon={AlertIcon} message="There was an error while processing your request" />
+        contentToBeRendered = <Alert id="error-alert" icon={AlertIcon} message="There was an error while cessing your request" />
     }
 
     return (

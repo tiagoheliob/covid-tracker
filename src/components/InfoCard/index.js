@@ -6,7 +6,13 @@ import './infoCard.css';
 
 export default ({ info }) => {
     const validateInfo = (info) => info ? info : 'N/A';
-    const fields = mappedFieldsToRender.map(({ field, label }) => <Card.Text key={label}>{label}: {validateInfo(info[field])}</Card.Text>)
+    const fields = mappedFieldsToRender.map(({ field, label }) => {
+        return (
+            <Card.Text key={label}>
+                {label}: { validateInfo(info[field]) }
+            </Card.Text>
+        );
+    });
     
     return (
         <>
