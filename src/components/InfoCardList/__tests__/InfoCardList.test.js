@@ -35,7 +35,6 @@ describe('The Info Card List', () => {
         expect(props.searchWithoutCountry).toHaveBeenCalled();
     });
     
-    //InfoCard
     it('verify if renders the right amount of cards based on the quantity of countries passed ', () => {
         const countries = generateCountries(3);
 

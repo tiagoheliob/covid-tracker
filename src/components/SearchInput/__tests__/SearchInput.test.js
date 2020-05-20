@@ -38,7 +38,6 @@ describe('The Search Input component', () => {
         expect(props.searchWithoutCountry).toHaveBeenCalled();
     });
 
-    //When it's loading the button  and the input should be disabled
     it('should disable the input and the button when isLoading property is true', () => {
         wrapper.setProps({ isLoading: true });
         
