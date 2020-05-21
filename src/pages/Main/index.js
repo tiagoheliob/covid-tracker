@@ -1,15 +1,11 @@
 import React from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import SearchInput from '../../components/SearchInput';
 import InfoCardList from '../../components/InfoCardList';
 
-
 import './main.css';
 
-
-export const Main = ({ error }) => {
-    
+export default () => {
     return (
         <>
             <Container className="main-page-container">
@@ -21,6 +17,3 @@ export const Main = ({ error }) => {
         </>
     )
 }
-
-const mapDispatchToProps = ({ countrySearch: { error } }) => ({ error })
-export default connect(mapDispatchToProps)(Main);

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { mappedFieldsToRender } from './constant';
+import { withRouter } from 'react-router-dom'
+import { mappedFieldsToRender } from './constant'; 
 import './infoCard.css';
 
 
-export default ({ info }) => {
+export const InfoCard = ({ info, history }) => {
     const validateInfo = (info) => info ? info : 'N/A';
     const fields = mappedFieldsToRender.map(({ field, label }) => {
         return (
@@ -13,6 +14,10 @@ export default ({ info }) => {
             </Card.Text>
         );
     });
+
+    const redirectToDetailedPage = () => {
+        history.push(`/country/${info.country}`);
+    }
     
     return (
         <>
@@ -25,8 +30,10 @@ export default ({ info }) => {
                 <Card.Body>
                     {fields}
                 </Card.Body>
-                {<Button className="learn-more-button" variant="dark">Learn more</Button>}
+                {<Button className="learn-more-button" variant="dark" onClick={redirectToDetailedPage}>Learn more</Button>}
             </Card>
         </>
     )
-}
+};
+
+export default withRouter(InfoCard);

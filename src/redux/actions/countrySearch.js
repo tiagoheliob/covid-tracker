@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const CountrySearch = {
-    ERROR : 'ERROR',
-    SUCCESS: 'SUCCESS',
-    CLEANUP: 'CLEANUP',
-    LOADING: 'LOADING',
+    ERROR : 'COUNTRY_SEARCH_ERROR',
+    SUCCESS: 'COUNTRY_SEARCH_SUCCESS',
+    CLEANUP: 'COUNTRY_SEARCH_CLEANUP',
+    LOADING: 'COUNTRY_SEARCH_LOADING',
 }
 
 export const baseURL = "https://coronavirus-19-api.herokuapp.com";

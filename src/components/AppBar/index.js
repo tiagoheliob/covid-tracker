@@ -7,7 +7,7 @@ export default () => {
     return (
         <>
             <Navbar bg="dark">
-                <Navbar.Brand href="#home" className="logo-container">
+                <Navbar.Brand href="/" className="logo-container">
                     <img
                         alt=""
                         src={Logo}
