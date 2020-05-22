@@ -5,4 +5,4 @@ export const mappedFieldsToRender = [
     { field: 'recovered' , label: 'Recovered' },
     { field: 'active' , label: 'Active Cases' },
     { field: 'critical' , label: 'Critical' },
-]
+];

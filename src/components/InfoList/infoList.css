@@ -1,0 +1,11 @@
+.info-list-container {
+    font-size: 18px;
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+}
+
+.info-list-container-item {
+    margin-bottom: 20px;
+    font-weight: 400;
+}

@@ -14,6 +14,6 @@ export default ( state = defaultState, action ) => {
         case CountryPolygon.LOADING:
             return { ...state, isLoading: true };
         default:
-            return defaultState;
+            return state;
     }
 }

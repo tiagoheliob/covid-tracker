@@ -1,6 +1,6 @@
 export const mapDetailedInformationPage = ({ countrySearch, countryPolygon }) => {
     return {
-        countrySearch: { ...countrySearch }, 
+        countrySearch, 
         countryPolygon: { ...countryPolygon },
     }
 }

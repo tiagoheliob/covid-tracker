@@ -6,6 +6,7 @@ export const defaultState = {
     error: false,
 }
 export default ( state = defaultState, action ) => {
+
     switch(action.type) {
         case CountrySearch.ERROR:
             return { ...state, isLoading: false, error: true }
@@ -16,6 +17,6 @@ export default ( state = defaultState, action ) => {
         case CountrySearch.CLEANUP:
             return defaultState;
         default:
-            return defaultState;
+            return {...state};
     }
 }
