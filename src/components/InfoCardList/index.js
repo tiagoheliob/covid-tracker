@@ -16,7 +16,7 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
             searchWithoutCountry();
         }
         fetchCountries();
-    },[location]);  
+    },[]);  
 
     const generateCards = (countries) => {
         return countries.map(country =>

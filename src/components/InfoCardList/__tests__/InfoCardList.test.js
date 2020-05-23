@@ -2,10 +2,17 @@ import React from 'react';
 import { InfoCardList } from '../index';
 import { mount } from 'enzyme';
 import Alert from '../../Alert';
-import InfoCard from '../../InfoCard';
+import { InfoCard } from '../../InfoCard';
+import { MemoryRouter } from 'react-router-dom';
 
 let wrapper = null;
 let props;
+
+const Proxy  = (props) => (
+    <MemoryRouter>
+        <InfoCardList {...props} />
+    </MemoryRouter>   
+)
 
 beforeEach(() => {
     
@@ -15,7 +22,8 @@ beforeEach(() => {
         error: '',
     };
 
-    wrapper = mount(<InfoCardList {...props} />)
+    wrapper = mount(<Proxy {...props} />);
+    
 });
 
 
@@ -37,7 +45,7 @@ describe('The Info Card List', () => {
     
     it('verify if renders the right amount of cards based on the quantity of countries passed ', () => {
         const countries = generateCountries(3);
-
+        
         wrapper.setProps({ countries });
 
         expect(wrapper.find(InfoCard).length).toBe(3);

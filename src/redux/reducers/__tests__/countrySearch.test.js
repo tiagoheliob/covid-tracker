@@ -25,7 +25,7 @@ describe('The country Search Reducer', () => {
         expect(countrySearchReducer(defaultState, action)).toEqual(defaultState);
     });
 
-    it('should return the default by default', () => {
-        expect(countrySearchReducer(null, { type: 'UNKNOWN' })).toEqual(defaultState);
+    it('should return the current state by default', () => {
+        expect(countrySearchReducer(null, { type: 'UNKNOWN' })).toEqual({});
     });
 })

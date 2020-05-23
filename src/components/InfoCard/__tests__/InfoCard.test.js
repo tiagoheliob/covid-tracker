@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { mount } from 'enzyme';
 import { mappedFieldsToRender } from '../constant';
-import InfoCard from '../index';
+import { InfoCard } from '../index';
 
 let props = {};
 let wrapper = null;
@@ -29,6 +29,6 @@ describe('The Info Card', () => {
     });
 
     it('should shows N/A (not available) when the API does not return the field', () => {
-        expect(wrapper.find(Card.Text).at(3).text()).toContain("N/A");
+        expect(wrapper.find(Card.Text).at(2).text()).toContain("N/A");
     });
 });

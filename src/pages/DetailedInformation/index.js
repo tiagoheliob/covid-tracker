@@ -12,7 +12,7 @@ import { mapDetailedInformationPage } from './selector';
 import './detailedInformation.css';
 
 export default ({ history }) => {
-    console.log(history);
+    
     const { countryName } = useParams();
     const dispatch = useDispatch();
     const countrySelector = useSelector(mapDetailedInformationPage);
