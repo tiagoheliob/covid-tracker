@@ -1,7 +1,7 @@
 import { CountryPolygon } from '../actions/countryPolygon';
 
 export const defaultState = {
-    countryInfo: null,
+    countryInfo: {},
     isLoading: false,
     error: false,
 }

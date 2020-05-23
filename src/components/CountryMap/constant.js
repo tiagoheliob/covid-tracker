@@ -9,11 +9,11 @@ export const getPolygonStyle = {
     opacity: 0.65
 };
 
-export const mapGeoJson = (coordinates) => ({
+export const generateGeoJson = ({ coordinates, type }) => ({
     type: "Feature",
     properties: {},
     geometry: {
-      type: "MultiPolygon",
+      type,
       coordinates,
     }
 });

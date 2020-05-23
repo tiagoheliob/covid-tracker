@@ -1,15 +1,17 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { mappedFieldsToRender, formatNumber } from './constant';
+import { formatInfo } from '../../helpers/dataFormat';
 import './infoList.css';
 
 export default ({ country }) => {
-
+    
     if(!country) {
-        return <div>Loading...</div>
+        return <Skeleton count={18} />
     }
     
     const list = mappedFieldsToRender.map(({ field, label }) => {
-        return <li key={field} className="info-list-container-item">{label}: {formatNumber(country[field])}</li>
+        return <li key={field} className="info-list-container-item">{label}: { formatInfo(country[field]) }</li>
     });
 
     return (

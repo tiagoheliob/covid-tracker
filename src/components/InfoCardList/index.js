@@ -6,6 +6,7 @@ import Alert from '../Alert/index';
 import { searchWithoutCountry } from '../../redux/actions/countrySearch';
 import NotFoundEmoji from '../../../assets/icons/sad-emoji.svg';
 import AlertIcon from '../../../assets/icons/alert.svg';
+import selector from './selector';
 import './infoCardList.css';
 
 export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
@@ -15,7 +16,7 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
             searchWithoutCountry();
         }
         fetchCountries();
-    },[]);  
+    },[location]);  
 
     const generateCards = (countries) => {
         return countries.map(country =>
@@ -44,6 +45,6 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
     );
 }
 
-const mapDispatchToProps = ({ countrySearch: { countries, error } }) => ({ countries, error });
+const mapStateToProps = selector;
 
-export default connect(mapDispatchToProps, { searchWithoutCountry })(InfoCardList)
+export default connect(mapStateToProps, { searchWithoutCountry })(InfoCardList)

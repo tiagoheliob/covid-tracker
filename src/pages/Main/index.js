@@ -5,7 +5,8 @@ import InfoCardList from '../../components/InfoCardList';
 
 import './main.css';
 
-export default () => {
+export default ({ location }) => {
+    
     return (
         <>
             <Container className="main-page-container">

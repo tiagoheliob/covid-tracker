@@ -44,5 +44,5 @@ export const SearchInput =  ({ searchByCountry, searchWithoutCountry, isLoading 
     );
 };
 
-const mapDispatchToProps = ({ countrySearch: { isLoading } }) => ({ isLoading });
-export default connect(mapDispatchToProps, { searchByCountry, searchWithoutCountry })(SearchInput);
+const mapStateToProps = ({ countrySearch: { isLoading } }) => ({ isLoading });
+export default connect(mapStateToProps, { searchByCountry, searchWithoutCountry })(SearchInput);

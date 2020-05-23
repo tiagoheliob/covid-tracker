@@ -3,41 +3,28 @@ import { Map, TileLayer, Polygon, GeoJSON } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
-import { tileLayerProps, getPolygonStyle } from './constant';
+import Skeleton from 'react-loading-skeleton';
+import { tileLayerProps, getPolygonStyle, generateGeoJson } from './constant';
 
 import './countryMap.css';
 
-const generateGeoJson = (coordinates) => {
-  return {
-    type: "Feature",
-    properties: {},
-    geometry: {
-      type: "MultiPolygon",
-      coordinates,
-    }
-  }
-}
-
 export default class CountryMap extends Component {
-    state = {
-        zoom: 4,
-    }
     
     render() {
-        const { lat, lon, coordinates, zoom } = this.props;
+        
+        const { lat, lon, geojson, zoom } = this.props;
 
         if(!lat && !lon) {
-          return <div>Loading..</div>
+          return <Skeleton count={18}/>
         }
 
         const position = [lat, lon];
         return (
-          <Map center={position} zoom={this.state.zoom} className="map-container">
+          <Map center={position} zoom={zoom} className="map-container">
             <TileLayer
               {...tileLayerProps}
             />
-            <GeoJSON key='my-geojson' data={generateGeoJson(coordinates)} style={getPolygonStyle}/>
-            {/* <Polygon color="purple" positions={this.state.polylinePos} /> */}
+            <GeoJSON key='my-geojson' data={generateGeoJson(geojson)} style={getPolygonStyle}/>
           </Map>
         )
     }

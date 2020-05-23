@@ -12,8 +12,7 @@ export default () => {
     return (
         <Provider store={store}>
             <AppBar />
-            <BrowserRouter>
-            
+            <BrowserRouter forceRefresh={true} >
                 <Route component={Main} path="/" exact/>
                 <Route component={DetailedInformation} path="/country/:countryName" />
             </BrowserRouter>
