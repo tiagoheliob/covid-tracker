@@ -1,6 +1,7 @@
 # Covid Tracker App
 Project to track the spread of the Corona Virus worldwide, you can check the live version at https://covid-track.surge.sh/ 
 
+# Coverage
 <img src="./coverage/badge-branches.svg">
 <img src="./coverage/badge-functions.svg">
 <img src="./coverage/badge-lines.svg">
