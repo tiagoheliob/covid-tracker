@@ -9,5 +9,10 @@ module.exports = {
     },
     setupFilesAfterEnv: [
         "<rootDir>/src/setupTests.js"
+    ],
+    coverageReporters: [
+        "json-summary", 
+        "text",
+        "lcov"
     ]
 }
