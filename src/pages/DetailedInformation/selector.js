@@ -3,7 +3,7 @@ export const mapDetailedInformationPage = ({ countrySearch, countryPolygon }) =>
     const { countries } = countrySearch;
     return {
         isLoadingMap: countryPolygon.isLoading,
-        isLoadingChart: countries.isLoading,
+        isLoadingCountryData: countrySearch.isLoading,
         countrySearch: Array.isArray(countries) ? null : countries,
         countryPolygon: { 
             lat, 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { mount } from 'enzyme';
 import { mappedFieldsToRender } from '../constant';
 import { InfoCard } from '../index';
@@ -16,7 +16,10 @@ beforeEach(() => {
                 recovered: null,
                 active: 'Mocked',
                 critical: 'Mocked'
-        }
+        },
+        history: {
+            push: jest.fn()
+        },
     };
     wrapper = mount(<InfoCard {...props} />)
     
@@ -31,4 +34,11 @@ describe('The Info Card', () => {
     it('should shows N/A (not available) when the API does not return the field', () => {
         expect(wrapper.find(Card.Text).at(2).text()).toContain("N/A");
     });
+
+    it('Should redirect the user when the "Learn More" button is clicked', () => {
+        wrapper.find(Button).simulate('click');
+        
+        expect(props.history.push).toHaveBeenCalled();
+    });
+
 });

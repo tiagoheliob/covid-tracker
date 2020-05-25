@@ -17,9 +17,8 @@ export default ({ history }) => {
     const dispatch = useDispatch();
     const countrySelector = useSelector(mapDetailedInformationPage);
 
-    const { countrySearch, countryPolygon } = countrySelector;
-    const countryMapProps = {...countryPolygon, zoom: 4 };
-
+    const { countrySearch, countryPolygon, isLoadingMap, isLoadingCountryData } = countrySelector;
+    const countryMapProps = {...countryPolygon, zoom: 4, isLoading: isLoadingMap };
 
     useEffect(() => {
         dispatch(searchByCountry(countryName));
@@ -27,9 +26,9 @@ export default ({ history }) => {
     }, []);
 
     const onClickBackButton = () => {
-    
         history.push('/');
     }
+
     
     return (
         <div className="detailed-information-container">
@@ -41,12 +40,12 @@ export default ({ history }) => {
                 </Col>
                 <Col md={6} sm={12} className="col-space-divider">
                     <h3>Detailed Information</h3>
-                    <InfoList country={countrySearch}/>
+                    <InfoList country={countrySearch} isLoading={isLoadingCountryData}/>
                 </Col>
             </Row>
             <h3>Information side by side</h3>
             <Row className="chart-container">
-                <ChartList countryData={countrySearch} />
+                <ChartList countryData={countrySearch} isLoading={isLoadingCountryData}/>
             </Row>
         </div>
     )

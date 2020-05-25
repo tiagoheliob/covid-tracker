@@ -4,9 +4,9 @@ import { mappedFieldsToRender, formatNumber } from './constant';
 import { formatInfo } from '../../helpers/dataFormat';
 import './infoList.css';
 
-export default ({ country }) => {
+export default ({ country, isLoading }) => {
     
-    if(!country) {
+    if(!country || isLoading) {
         return <Skeleton count={18} />
     }
     

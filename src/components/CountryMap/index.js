@@ -12,9 +12,10 @@ export default class CountryMap extends Component {
     
     render() {
         
-        const { lat, lon, geojson, zoom } = this.props;
-
-        if(!lat && !lon) {
+        const { lat, lon, geojson, zoom, isLoading } = this.props;
+      
+        
+        if( (!lat && !lon) || isLoading) {
           return <Skeleton count={18}/>
         }
 
