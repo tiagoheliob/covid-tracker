@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "NODE_ENV=development npm run clean && webpack -p",
-    "serve": "webpack-dev-server",
+    "serve": "webpack-dev-server --host=0.0.0.0 --disable-host-check --useLocalIp",
     "test": "jest --config ./jest.config.js --watch"
   },
   "author": "",
