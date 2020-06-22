@@ -5,7 +5,7 @@ export const paginate = (data, numberOfRecordsPerPage) => {
     }
 
     if(data.length < numberOfRecordsPerPage) {
-        return { 1: data }
+        return { dataPaginated: { 1: data },  numberOfPages: 1}
     }
         
     let paginated = {};

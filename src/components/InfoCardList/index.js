@@ -21,13 +21,22 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
             searchWithoutCountry();
         }
         fetchCountries();
-    },[]);  
+    },[]);
 
     useEffect(() => {
         
-        if (countries.length) {
-            setPaginatedCountry(paginate(countries, 20));
+
+        if (typeof countries  === 'string') {
+            setPaginatedCountry(null);
+            return;
         }
+
+        if (countries.length || !Array.isArray(countries)) {
+            const data = Array.isArray(countries) ? countries : [countries];
+            setPaginatedCountry(paginate(data, 20));
+        }
+
+        setPage(1);
 
     }, [countries])
 
@@ -38,7 +47,7 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
         if(!paginatedCountry) {
             return;
         }
-        console.log(paginatedCountry);
+        
         return paginatedCountry.dataPaginated[page].map(country =>
             <Col md={4} sm={6} xs={12} key={country.country}>
                 <InfoCard info={country}/>
@@ -52,7 +61,7 @@ export const InfoCardList = ({ countries, searchWithoutCountry, error }) => {
             return;
         }
 
-        return (            
+        return (
             <Pagination 
                 onSelectPage={onSelectPage}
                 activatePage={page} 

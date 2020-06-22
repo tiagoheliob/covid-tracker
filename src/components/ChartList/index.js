@@ -13,8 +13,16 @@ export default ({ countryData, isLoading }) => {
         if (!countryData || isLoading) {
             contentToBeRendered = <Skeleton circle width={200} height={200}/>;
         } else {
+
             const chartData = group.map( ({ label, field }) => ({ name: label, value: countryData[field] }) );
-            contentToBeRendered = <PieChart data={chartData}/>;
+            
+            if(chartData.some(data => !data.value)) {
+                contentToBeRendered = <b>Not available</b>;
+            } else {
+                contentToBeRendered = <PieChart data={chartData}/>;
+            }
+
+            
         }
         
 
