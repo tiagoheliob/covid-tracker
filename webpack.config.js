@@ -12,6 +12,9 @@ module.exports = {
         bundle: './src/index.js',
         vendor,
     },
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"],
+    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].[chunkhash].js',
@@ -51,6 +54,11 @@ module.exports = {
                     loader: 'file-loader',
                   },
                 ],
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: ["ts-loader"],
             },
         ]
     },
