@@ -18,6 +18,7 @@ module.exports = {
         chunkFilename: '[name].bundle.js',
         publicPath: '/',
     },
+    devtool: "eval-cheap-source-map",
     module: {
         rules: [
             {   
