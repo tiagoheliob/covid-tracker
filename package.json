@@ -1,5 +1,5 @@
 {
-  "name": "react-borba-boilerplate",
+  "name": "covid-tracking",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "build:prod": "NODE_ENV=production npm run clean && webpack -p",
     "build:dev": "npm run clean && webpack",
-    "serve": "webpack serve --config webpack.config.js --mode=development",
+    "start": "webpack serve --config webpack.config.js --mode=development",
     "test": "jest --config ./jest.config.js",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
@@ -35,7 +35,8 @@
     "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typescript": "^4.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -45,8 +46,10 @@
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.14.5",
+    "@types/jest": "^26.0.23",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",
+    "@types/react-leaflet": "^2.8.1",
     "babel-loader": "^8.0.0",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",

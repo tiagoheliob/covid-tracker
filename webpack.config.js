@@ -9,7 +9,7 @@ const vendor = [
 
 module.exports = {
     entry: {
-        bundle: './src/index.js',
+        bundle: './src/index.tsx',
         vendor,
     },
     resolve: {
