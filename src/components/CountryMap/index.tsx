@@ -1,12 +1,9 @@
 import { Component } from "react";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L, { LatLngExpression } from "leaflet";
-import axios from "axios";
+import { LatLngExpression } from "leaflet";
 import Skeleton from "react-loading-skeleton";
 import { tileLayerProps, getPolygonStyle, generateGeoJson } from "./constant";
-
-import "./countryMap.css";
 
 class CountryMap extends Component<any> {
   render() {
@@ -18,7 +15,7 @@ class CountryMap extends Component<any> {
 
     const position: LatLngExpression = [lat, lon];
     return (
-      <Map center={position} zoom={zoom} className="map-container">
+      <Map center={position} zoom={zoom}>
         <TileLayer {...tileLayerProps} />
         <GeoJSON
           key="my-geojson"
