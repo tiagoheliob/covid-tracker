@@ -11,7 +11,7 @@ import { mapDetailedInformationPage } from "./selector";
 
 import "./detailedInformation.css";
 
-export default ({ history }) => {
+const DetailedInformation = ({ history }) => {
   const { countryName } = useParams();
   const dispatch = useDispatch();
   const countrySelector = useSelector(mapDetailedInformationPage);
@@ -53,3 +53,5 @@ export default ({ history }) => {
     </div>
   );
 };
+
+export default DetailedInformation;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { LatLngExpression } from "leaflet";
@@ -8,14 +8,7 @@ import { tileLayerProps, getPolygonStyle, generateGeoJson } from "./constant";
 
 import "./countryMap.css";
 
-interface CountryMap {
-  lat: number;
-  lon: number;
-  geojson: any;
-  zoom: number;
-  isLoading: boolean;
-}
-class CountryMap extends Component<CountryMap> {
+class CountryMap extends Component<any> {
   render() {
     const { lat, lon, geojson, zoom, isLoading } = this.props;
 
