@@ -4,10 +4,10 @@ import styled from "styled-components";
 import {
   countriesListSelector,
   mapDetailedInformationPage,
-} from "../../pages/DetailedInformation/selector";
+} from "../../redux/selectores/countries-selector";
 import { fetchCountryPolygons } from "../../redux/actions/countryPolygon";
 import CountryMap from "../../components/CountryMap";
-import { genericSearch } from "../../redux/actions/countrySearch";
+import { fetchCountries } from "../../redux/actions/countrySearch";
 import CountryDetailedInfo from "../CountryDetailedInfo/country-detailed-info";
 
 const MainInfoContainer = styled.div`
@@ -68,18 +68,18 @@ const CountriesList: FC = () => {
 
   const dispatch = useDispatch();
   const countrySelector = useSelector(mapDetailedInformationPage);
-  const countriesList = useSelector(countriesListSelector);
+  const { countries } = useSelector(countriesListSelector);
 
-  const { countryPolygon, isLoadingMap } = countrySelector;
+  const { countryPolygon, isLoading } = countrySelector;
   const countryMapProps = {
     ...countryPolygon,
     zoom: 5,
-    isLoading: isLoadingMap,
+    isLoading,
   };
 
   // Fetch the countries
   useEffect(() => {
-    dispatch(genericSearch());
+    dispatch(fetchCountries());
   }, []);
 
   // When the user selects a country fetch country location/geojson
@@ -105,13 +105,13 @@ const CountriesList: FC = () => {
 
   // Renders a list of countries
   const renderCountriesList = () => {
-    if (!countriesList) {
+    if (!countries) {
       return null;
     }
 
     let mappedCountries = searchTerm
-      ? filtersCountryList(countriesList)
-      : countriesList;
+      ? filtersCountryList(countries)
+      : countries;
 
     return mappedCountries.map(({ country, cases }) => (
       <CountrySpan onClick={() => setSelectedCountry(country)} key={country}>
