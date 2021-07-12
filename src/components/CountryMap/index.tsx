@@ -15,7 +15,7 @@ class CountryMap extends Component<any> {
 
     const position: LatLngExpression = [lat, lon];
     return (
-      <Map center={position} zoom={zoom}>
+      <Map center={position} zoom={zoom} zoomControl={false}>
         <TileLayer {...tileLayerProps} />
         <GeoJSON
           key="my-geojson"
