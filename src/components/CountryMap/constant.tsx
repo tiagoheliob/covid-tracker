@@ -1,5 +1,3 @@
-import { GeoJSONProps } from "react-leaflet";
-
 export const tileLayerProps = {
   attribution:
     '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',

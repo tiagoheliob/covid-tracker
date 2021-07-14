@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import Navbar from "../Navbar";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
-import CountriesList from "../CountriesList/countries-list";
+import Main from "../Main/main";
 import { GlobalStyle, theme } from "../../styled-configuration/globalStyle";
 
 import store from "../../redux/store";
@@ -14,7 +14,7 @@ export default () => {
         <Navbar />
         <GlobalStyle />
         <BrowserRouter forceRefresh={true}>
-          <Route component={CountriesList} path="/" exact />
+          <Route component={Main} path="/" exact />
         </BrowserRouter>
       </ThemeProvider>
     </Provider>
