@@ -120,6 +120,7 @@ const CountriesList: FC = () => {
       </CountrySpan>
     ));
   };
+
   return (
     <MainInfoContainer>
       <CountriesListContainer>

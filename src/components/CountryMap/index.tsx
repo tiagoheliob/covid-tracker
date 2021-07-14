@@ -13,6 +13,8 @@ class CountryMap extends Component<any> {
       return <Skeleton count={18} />;
     }
 
+    console.log("geojson", geojson);
+
     const position: LatLngExpression = [lat, lon];
     return (
       <Map center={position} zoom={zoom} zoomControl={false}>

@@ -1,19 +1,24 @@
-import { CountryPolygon } from '../actions/countryPolygon';
+import { CountryPolygon } from "../actions/countryPolygon";
 
 export const defaultState = {
-    countryInfo: {},
-    isLoading: false,
-    error: false,
-}
-export default ( state = defaultState, action ) => {
-    switch(action.type) {
-        case CountryPolygon.ERROR:
-            return { ...state, isLoading: false, error: true }
-        case CountryPolygon.SUCCESS:
-            return { ...state, isLoading: false, error: false, countryInfo: action.payload }
-        case CountryPolygon.LOADING:
-            return { ...state, isLoading: true };
-        default:
-            return state;
-    }
-}
+  countryInfo: {},
+  isLoading: false,
+  error: false,
+};
+export default (state = defaultState, action) => {
+  switch (action.type) {
+    case CountryPolygon.ERROR:
+      return { ...state, isLoading: false, error: true };
+    case CountryPolygon.SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+        countryInfo: action.payload,
+      };
+    case CountryPolygon.LOADING:
+      return { ...defaultState, isLoading: true };
+    default:
+      return state;
+  }
+};

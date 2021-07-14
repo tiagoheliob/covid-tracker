@@ -6,7 +6,6 @@ import CountriesList from "../CountriesList/countries-list";
 import { GlobalStyle, theme } from "../../styled-configuration/globalStyle";
 
 import store from "../../redux/store";
-import "./app.css";
 
 export default () => {
   return (
