@@ -2,19 +2,20 @@ import { FC, useEffect } from "react";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
-import { CountriesMapContainer } from "./country-map.styles";
+import { CountriesMapContainer, CenteredContainer } from "./country-map.styles";
 import { tileLayerProps, getPolygonStyle, generateGeoJson } from "./constant";
 import { useDispatch, useSelector } from "react-redux";
-import { mapDetailedInformationPage } from "../../redux/selectores/countries-selector";
+import { countryPolygonSelector } from "../../redux/selectors/countries-selector";
 import { fetchCountryPolygons } from "../../redux/actions/countryPolygon";
 import CountryDetailedInfo from "../CountryDetailedInfo/country-detailed-info";
+import Spinner from "../Common/spinner";
 
 interface CountryMapProps {
   selectedCountry?: string;
 }
 const CountryMap: FC<CountryMapProps> = ({ selectedCountry }) => {
   const dispatch = useDispatch();
-  const { countryPolygon, isLoading } = useSelector(mapDetailedInformationPage);
+  const { countryPolygon, isLoading } = useSelector(countryPolygonSelector);
   const { lat, lon, geojson } = countryPolygon;
 
   // When the user selects a country fetch country location/geojson
@@ -24,8 +25,18 @@ const CountryMap: FC<CountryMapProps> = ({ selectedCountry }) => {
     }
   }, [selectedCountry]);
 
-  if ((!lat && !lon) || isLoading) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <CenteredContainer>
+        <Spinner />
+      </CenteredContainer>
+    );
+  }
+
+  if (!lat && !lon) {
+    return (
+      <CenteredContainer>Select a country to enable Map view</CenteredContainer>
+    );
   }
 
   const position: LatLngExpression = [lat, lon];

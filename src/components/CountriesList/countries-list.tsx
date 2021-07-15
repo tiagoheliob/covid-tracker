@@ -1,7 +1,9 @@
 import { FC, useState, useEffect, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../../redux/actions/countrySearch";
-import { countriesListSelector } from "../../redux/selectores/countries-selector";
+import { countriesListSelector } from "../../redux/selectors/countries-selector";
+import Spinner from "../Common/spinner";
+import { CenteredContainer } from "../CountryMap/country-map.styles";
 import {
   CountriesListContainer,
   CountrySpan,
@@ -37,12 +39,14 @@ const CountriesList: FC<CountriesListProps> = ({ onSelectCountry }) => {
     setSearchTerm(value);
   };
 
+  // Format Numbers
+  const formatNumber = (value: number) => {
+    var nf = new Intl.NumberFormat();
+    return nf.format(value);
+  };
+
   // Renders countries list if there is data
   const renderCountriesList = () => {
-    if (!countries || isLoading) {
-      return null;
-    }
-
     let mappedCountries = searchTerm
       ? filtersCountryList(countries)
       : countries;
@@ -50,10 +54,18 @@ const CountriesList: FC<CountriesListProps> = ({ onSelectCountry }) => {
     return mappedCountries.map(({ country, cases }) => (
       <CountrySpan onClick={() => onSelectCountry(country)} key={country}>
         <span>{country}</span>
-        <span>{cases}</span>
+        <span>{formatNumber(cases)}</span>
       </CountrySpan>
     ));
   };
+
+  if (isLoading) {
+    return (
+      <CenteredContainer>
+        <Spinner />
+      </CenteredContainer>
+    );
+  }
 
   return (
     <CountriesListContainer>

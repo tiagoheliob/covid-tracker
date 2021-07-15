@@ -6,6 +6,7 @@ export const CountryPolygon = {
   ERROR: "COUNTRY_POLYGON_ERROR",
   SUCCESS: "COUNTRY_POLYGON_SUCCESS",
   LOADING: "COUNTRY_POLYGON_LOADING",
+  CLEAN: "COUNTRY_POLYGON_CLEAN",
 };
 
 export const getUrl = (countryName) =>
@@ -22,3 +23,7 @@ export const fetchCountryPolygons =
       dispatch({ type: CountryPolygon.ERROR });
     }
   };
+
+export const cleanPolygon = () => ({
+  type: CountryPolygon.CLEAN,
+});
