@@ -43,7 +43,7 @@ const CountryMap: FC<CountryMapProps> = ({ selectedCountry }) => {
 
   return (
     <CountriesMapContainer>
-      <CountryDetailedInfo />
+      <CountryDetailedInfo selectedCountry={selectedCountry} />
       <Map center={position} zoomControl={false} zoom={5}>
         <TileLayer {...tileLayerProps} />
         <GeoJSON

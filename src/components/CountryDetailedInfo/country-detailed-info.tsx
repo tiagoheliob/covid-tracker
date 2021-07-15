@@ -1,12 +1,12 @@
 import { FC } from "react";
-import styled from "styled-components";
-
-const CountryDetailedInfoContainer = styled.div`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 999;
-`;
+import { useSelector } from "react-redux";
+import { countriesListSelector } from "../../redux/selectors/countries-selector";
+import { mappedFieldsToRender } from "./country-detailed-info.constant";
+import {
+  CountryDetailedInfoContainer,
+  CountryTitle,
+  CountryInfoItem,
+} from "./country-detailed.styles";
 
 interface CountryDetailedInfoProps {
   selectedCountry?: string;
@@ -14,8 +14,32 @@ interface CountryDetailedInfoProps {
 const CountryDetailedInfo: FC<CountryDetailedInfoProps> = ({
   selectedCountry,
 }) => {
+  const { countries } = useSelector(countriesListSelector);
+
+  if (!countries.length || !selectedCountry) {
+    return null;
+  }
+
+  const mappedCountry = countries.find(
+    ({ country }) => country === selectedCountry
+  );
+
+  const renderInfoList = () => {
+    var nf = new Intl.NumberFormat();
+    return mappedFieldsToRender.map(({ field, label }) => {
+      return (
+        <CountryInfoItem key={field}>
+          {`${label}: ${nf.format(mappedCountry[field])}`}
+        </CountryInfoItem>
+      );
+    });
+  };
+
   return (
-    <CountryDetailedInfoContainer>Placeholder</CountryDetailedInfoContainer>
+    <CountryDetailedInfoContainer>
+      <CountryTitle>{mappedCountry.country}</CountryTitle>
+      {renderInfoList()}
+    </CountryDetailedInfoContainer>
   );
 };
 
