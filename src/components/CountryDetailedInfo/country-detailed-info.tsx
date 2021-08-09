@@ -6,7 +6,10 @@ import {
   CountryDetailedInfoContainer,
   CountryTitle,
   CountryInfoItem,
+  InfoSection,
+  SectionTitle,
 } from "./country-detailed.styles";
+import CountryDetailedInfoCharts from "./country-detailed-info-charts/country-detailed-info-charts";
 
 interface CountryDetailedInfoProps {
   selectedCountry?: string;
@@ -38,7 +41,12 @@ const CountryDetailedInfo: FC<CountryDetailedInfoProps> = ({
   return (
     <CountryDetailedInfoContainer>
       <CountryTitle>{mappedCountry.country}</CountryTitle>
-      {renderInfoList()}
+      <SectionTitle>Overview</SectionTitle>
+      <InfoSection>{renderInfoList()}</InfoSection>
+      <SectionTitle>Trend</SectionTitle>
+      <InfoSection>
+        <CountryDetailedInfoCharts countryData={mappedCountry} />
+      </InfoSection>
     </CountryDetailedInfoContainer>
   );
 };

@@ -59,7 +59,7 @@ const CountriesList: FC<CountriesListProps> = ({ onSelectCountry }) => {
     ));
   };
 
-  if (isLoading) {
+  if (isLoading || !countries) {
     return (
       <CenteredContainer>
         <Spinner />
